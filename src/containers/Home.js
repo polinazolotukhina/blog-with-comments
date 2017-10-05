@@ -21,7 +21,7 @@ class Home extends React.Component {
     }
 
     render() {
-        const { posts } = this.props;
+        const { posts, comments } = this.props;
         const postList = !isLoaded(posts)
             ? <div className = "load"><CircularProgress size={80} thickness={5} /></div>
             : isEmpty(posts)
@@ -32,7 +32,7 @@ class Home extends React.Component {
                  </div>)
               : Object.keys(posts).map(
                   (key, id) => (
-                    <PostItem key={key} id={key} post={posts[key]} />
+                    <PostItem key={key} id={key} post={posts[key]} comments={comments} />
                   )
                 )
         return (
@@ -47,15 +47,18 @@ class Home extends React.Component {
 
 export default compose(
   firebaseConnect([
+    'comments',
     {
         path: 'posts',
         storeAs: 'posts',
-        queryParams: []
+        queryParams: [],
     }
   ]),
   connect(
     (state) => ({
       posts: dataToJS(state.firebase, 'posts'),
+      comments: dataToJS(state.firebase, 'comments'),
+
     })
   )
 )(Home)

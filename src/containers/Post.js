@@ -20,10 +20,11 @@ import {
  class Post extends Component {
 
      submit(values,dispatch, props) {
-         console.log("HERE!", props.postId)
          const comments= {
              values: values,
-             id:props.postId
+             id:props.postId,
+             name: props.commentatorName,
+             url: props.commentatorImg
          }
        console.log("values", values)
        const firebase = getFirebase()
@@ -33,6 +34,7 @@ import {
 
   render() {
     const { posts, profile, comments  } = this.props;
+    console.log('profile', profile)
     return (
       <div className="container">
       {
@@ -42,19 +44,24 @@ import {
                   <h4>{posts&&posts[this.props.location.query.id]&&posts[this.props.location.query.id].subtitle}</h4>
                   <p>{posts&&posts[this.props.location.query.id]&&posts[this.props.location.query.id].notes}</p>
                   <hr/>
-                  <Remove id={this.props.location.query.id} title={posts[this.props.location.query.id].title} />
-                  <img src={profile &&profile.avatarUrl}  />
-                  <UserComment postId={this.props.location.query.id} onSubmit={this.submit} />
-                      {
-                         comments&&Object.values(comments).filter( i => i.id ==this.props.location.query.id).map((item, index) =>
-                             <div key={index}>
-                                {item.values.Comment}
-                            </div>
-                        )
-                      }
-
-
-
+                  <div>
+                    <Remove id={this.props.location.query.id} title={posts[this.props.location.query.id].title} />
+                  </div>
+                  <div className="col-md-1">
+                      <img className = "avatar-main" src={profile &&profile.avatarUrl}  />
+                   </div>
+                   <div className="col-md-11">
+                      <UserComment postId={this.props.location.query.id} commentatorImg = {profile&&profile.avatarUrl} commentatorName = {profile&&profile.displayName} onSubmit={this.submit} />
+                    </div>
+                          {
+                             comments&&Object.values(comments).filter( i => i.id ==this.props.location.query.id).map((item, index) =>
+                                 <div key={index}>
+                                    <img  className = "avatar" src = {item.url} />
+                                    <p className="line bold">{ item.name}</p>
+                                    <p className="line">{item.values.Comment}</p>
+                                </div>
+                            )
+                          }
 
               </div>
           ):(

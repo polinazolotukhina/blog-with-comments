@@ -5,6 +5,7 @@ import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import Checkbox from 'material-ui/Checkbox';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import { RaisedButton, FlatButton } from 'material-ui';
 
 
 const renderTextField = ({
@@ -49,16 +50,12 @@ const UserComment = props => {
           component={renderTextField}
           label="Comment..."
           multiLine={true}
-          rows={2} fullWidth={true}
+          rows={1} fullWidth={true}
         />
       </div>
       <div>
-        <button type="submit" disabled={pristine || submitting}>
-          Submit
-        </button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>
-          Clear Values
-        </button>
+        <RaisedButton type="submit"  label="Submit" disabled={pristine || submitting}/>
+        <RaisedButton type="button" label="Clear Values" disabled={pristine || submitting} onClick={reset}/>
       </div>
     </form>
   )

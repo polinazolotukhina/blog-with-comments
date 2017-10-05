@@ -6,7 +6,7 @@ import Remove from '../components/Remove';
 
 export default class  PostItem extends Component {
   render() {
-      const { post, id } = this.props;
+      const { post, id, comments } = this.props;
         return (
             <div>
                 <h2>{post.title}</h2>
@@ -19,6 +19,7 @@ export default class  PostItem extends Component {
                 })
                 }} />
                 <Remove id={id} title={post.title}/>
+                <h4>{ comments&&Object.values(comments).filter( i => i.id == id).length } comments</h4>
             </div>
       )
   }
