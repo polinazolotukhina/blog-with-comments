@@ -8,10 +8,18 @@ export default class  PostItem extends Component {
   render() {
       const { post, id, comments } = this.props;
         return (
-            <div>
+            <div className="blog-item">
                 <h2>{post.title}</h2>
                 <h4>{post.subtitle}</h4>
                 <p>{post.notes.slice(0,250)}...</p>
+                <h6 onClick={()=>{browserHistory.push({
+                    pathname:'/post',
+                    query: {id: id}
+                })
+                }}
+
+                >{ comments&&Object.values(comments).filter( i => i.id == id).length } comments</h6>
+
 
                 <FlatButton  primary={true} label="Read More" onClick={()=>{browserHistory.push({
                     pathname:'/post',
@@ -19,7 +27,6 @@ export default class  PostItem extends Component {
                 })
                 }} />
                 <Remove id={id} title={post.title}/>
-                <h4>{ comments&&Object.values(comments).filter( i => i.id == id).length } comments</h4>
             </div>
       )
   }

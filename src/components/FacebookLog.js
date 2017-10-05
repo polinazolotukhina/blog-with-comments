@@ -34,16 +34,15 @@ import {
 
    render() {
      const { auth, profile } = this.props;
-     console.log(' auth ',  auth );
      return (
-         <div className="text-center">
+         <div className="remove">
          {
              (!profile) ? (
                 <RaisedButton primary={true} label="Login with Facebook" onClick={this.login} />
              ):(
                  <div>
                      <img src={profile &&profile.avatarUrl}  />
-                     <div><RaisedButton primary={true}   label="Logout" onClick={this.logout}/></div>
+                     <div><RaisedButton primary={true}  label="Logout" onClick={this.logout}/></div>
                 </div>
             )
         }
