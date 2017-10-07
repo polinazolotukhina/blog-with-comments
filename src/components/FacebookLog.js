@@ -38,10 +38,10 @@ import {
          <div className="remove">
          {
              (!profile) ? (
-                <RaisedButton primary={true} label="Login with Facebook" onClick={this.login} />
+                <RaisedButton primary={true} label="Login with Facebook to leave comments" onClick={this.login} />
              ):(
                  <div>
-                     <img src={profile &&profile.avatarUrl}  />
+                     <img className="avatar-main" src={profile &&profile.avatarUrl}  />
                      <div><RaisedButton primary={true}  label="Logout" onClick={this.logout}/></div>
                 </div>
             )

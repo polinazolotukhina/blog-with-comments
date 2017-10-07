@@ -4,6 +4,7 @@ import { RaisedButton, FlatButton } from 'material-ui';
 import { browserHistory } from 'react-router';
 import { compose } from 'redux';
 import Remove from '../components/Remove';
+import RemoveComment from '../components/RemoveComment';
 import UserComment from '../components/UserComment';
 import { getFirebase } from 'react-redux-firebase';
 import FacebookLog from '../components/FacebookLog';
@@ -36,6 +37,7 @@ import {
 
   render() {
     const { posts, profile, comments  } = this.props;
+    console.log('comm', comments);
     return (
     <div className="container">
     {
@@ -70,7 +72,7 @@ import {
                                      <div key={index}>
                                         <img  className = "avatar" src = {item.url} />
                                         <p className="remove bold">{item.name}</p>
-                                        <p className="remove">{item.values.Comment}</p>
+                                        <p className="remove">{item.values.Comment}</p><RemoveComment comment={index} />
                                     </div>
                                 )
                             }
@@ -96,7 +98,8 @@ import {
 export default compose(
   firebaseConnect([
     'posts', // { path: 'todos' } // object notation
-    'comments'
+    { path: '/comments', queryParams: [ 'orderByKey' ]},
+    // '/comments#orderByKey'
 
   ]),
   connect(

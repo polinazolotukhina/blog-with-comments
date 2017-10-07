@@ -6,7 +6,6 @@ import NewPost from './containers/NewPost';
 import Post from './containers/Post';
 import Search from './containers/Search';
 import Contacts from './containers/Contacts';
-import FacebookLog from './components/FacebookLog';
 import NotFoundPage from './components/NotFoundPage';
 
 
@@ -18,7 +17,6 @@ export default (
             <Route path="newpost" component={NewPost} ignoreScrollBehavior/>
             <Route path="post" component={Post} ignoreScrollBehavior/>
             <Route path="search" component={Search} ignoreScrollBehavior/>
-            <Route path="login" component={FacebookLog} ignoreScrollBehavior/>
             <Route path="contact" component={Contacts} ignoreScrollBehavior/>
             <Route path="*" component={NotFoundPage} ignoreScrollBehavior/>
         </Route>
