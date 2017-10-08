@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { RaisedButton, FlatButton } from 'material-ui';
+import { RaisedButton } from 'material-ui';
 import { browserHistory } from 'react-router';
 import { compose } from 'redux';
 import Remove from '../components/Remove';
-import RemoveComment from '../components/RemoveComment';
 import UserComment from '../components/UserComment';
 import { getFirebase } from 'react-redux-firebase';
 import FacebookLog from '../components/FacebookLog';
@@ -72,7 +71,7 @@ import {
                                      <div key={index}>
                                         <img  className = "avatar" src = {item.url} />
                                         <p className="remove bold">{item.name}</p>
-                                        <p className="remove">{item.values.Comment}</p><RemoveComment comment={index} />
+                                        <p className="remove">{item.values.Comment}</p>
                                     </div>
                                 )
                             }
