@@ -11,30 +11,33 @@ import {
   isLoaded,
   isEmpty,
   dataToJS,
-  pathToJS
 } from 'react-redux-firebase';
 
 
 class Home extends React.Component {
-    constructor(props){
-        super(props);
+    checkIfEmpty(){
+        const { posts, comments } = this.props;
+        if(isEmpty(posts)){
+            return (<div>
+                <h2>Posts list is empty</h2>
+                <RaisedButton label="Create a new post" onClick={()=>{browserHistory.push('/newpost');}} />
+               </div>);
+        } else{
+            return (
+                Object.keys(posts).map(
+                    (key) => (
+                      <PostItem key={key} id={key} post={posts[key]} comments={comments} />
+                    )
+                  )
+            );
+        }
     }
 
     render() {
-        const { posts, comments } = this.props;
+        const { posts } = this.props;
         const postList = !isLoaded(posts)
             ? <div className = "load"><CircularProgress size={80} thickness={5} /></div>
-            : isEmpty(posts)
-              ? (<div>
-                  <h2>Posts list is empty</h2>
-                  <RaisedButton label="Create a new post" onClick={()=>{browserHistory.push('/newpost')}} />
-
-                 </div>)
-              : Object.keys(posts).map(
-                  (key, id) => (
-                    <PostItem key={key} id={key} post={posts[key]} comments={comments} />
-                  )
-                )
+            : this.checkIfEmpty();
         return (
             <div className="container">
                 <ul>

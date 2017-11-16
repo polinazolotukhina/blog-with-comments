@@ -28,7 +28,7 @@ class Remove extends React.Component {
        ];
         return (
             <div className="remove" >
-                <FlatButton secondary={true} label="Delete Post"  onClick={() => this.setState({open: true}) }/>
+                <FlatButton secondary={true} label="Delete Post"  onClick={() => this.setState({open: true})}/>
                 <Dialog
                   actions={actions}
                   modal={false}

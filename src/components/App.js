@@ -30,10 +30,10 @@ export default class App extends React.Component {
                     onClick={this.handleToggle}
                 />
                 <Drawer open={this.state.open}>
-                    <MenuItem  onClick={this.handleClose} onTouchTap={() => {this.openLink('/')}}>Blog</MenuItem>
-                    <MenuItem  onClick={this.handleClose} onTouchTap={() => {this.openLink('/newpost')}}>New Post</MenuItem>
-                    <MenuItem onClick={this.handleClose} onTouchTap={() => {this.openLink('/search')}}>Search</MenuItem>
-                    <MenuItem onClick={this.handleClose} onTouchTap={() => {this.openLink('/contact')}}>Contact Us</MenuItem>
+                    <MenuItem  onClick={this.handleClose} onTouchTap={() => {this.openLink('/');}}>Blog</MenuItem>
+                    <MenuItem  onClick={this.handleClose} onTouchTap={() => {this.openLink('/newpost');}}>New Post</MenuItem>
+                    <MenuItem onClick={this.handleClose} onTouchTap={() => {this.openLink('/search');}}>Search</MenuItem>
+                    <MenuItem onClick={this.handleClose} onTouchTap={() => {this.openLink('/contact');}}>Contact Us</MenuItem>
                 </Drawer>
                 <div className="main">
                     {this.props.children}

@@ -1,15 +1,13 @@
 import React from 'react';
-import { RaisedButton } from 'material-ui';
-import { getFirebase } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import {
    firebaseConnect,
-   isLoaded,
-   isEmpty,
-   dataToJS,
-   pathToJS
+   pathToJS,
+   getFirebase
  } from 'react-redux-firebase';
+ import { RaisedButton } from 'material-ui';
+
 
  class FacebookLog extends React.Component {
      constructor(props){
@@ -23,13 +21,12 @@ import {
        this.props.firebase.login({
           provider: 'facebook',
           type: 'redirect'
-        })
-
-   }
+      });
+    }
 
    logout(){
         const firebase = getFirebase();
-        firebase.logout()
+        firebase.logout();
    }
 
    render() {
@@ -47,7 +44,7 @@ import {
             )
         }
        </div>
-     )
+   );
    }
  }
 

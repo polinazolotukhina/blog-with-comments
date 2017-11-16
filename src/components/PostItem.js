@@ -15,7 +15,7 @@ export default class  PostItem extends Component {
                 <h6 onClick={()=>{browserHistory.push({
                     pathname:'/post',
                     query: {id: id}
-                })
+                });
                 }}
 
                 >{ comments&&Object.values(comments).filter( i => i.id == id).length } comments</h6>
@@ -24,10 +24,10 @@ export default class  PostItem extends Component {
                 <FlatButton  primary={true} label="Read More" onClick={()=>{browserHistory.push({
                     pathname:'/post',
                     query: {id: id}
-                })
+                });
                 }} />
                 <Remove id={id} title={post.title}/>
             </div>
-      )
+      );
   }
 }

@@ -5,12 +5,9 @@ import { getFirebase } from 'react-redux-firebase';
 
 export default class NewPost extends React.Component {
     submit(values) {
-      console.log(values)
-      const firebase = getFirebase()
+      const firebase = getFirebase();
       firebase
-      .push('contacts', values)
-
-
+      .push('contacts', values);
     }
 
     render() {
@@ -19,6 +16,6 @@ export default class NewPost extends React.Component {
             <div className="container">
                 <ContactForm onSubmit={this.submit} />
             </div>
-      )
+      );
     }
 }

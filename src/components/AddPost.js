@@ -8,12 +8,12 @@ import asyncValidate from './asyncValidate';
 
 
 const validate = values => {
-  const errors = {}
+  const errors = {};
   const requiredFields = [
     'title',
     'subtitle',
     'notes'
-  ]
+];
   requiredFields.forEach(field => {
     if (!values[field]) {
       errors[field] = 'Required'
